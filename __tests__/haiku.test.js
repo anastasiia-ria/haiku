@@ -38,7 +38,7 @@ describe("Haiku", () => {
   });
 
   test("should return true if line 1 is 5 syllables, line 2 is 7 syllables and line 3 is 5 syllables", () => {
-    const myHaiku = new Haiku("Hello there Francis!", "How are you doing today?", "I am fine thank you"); 
+    const myHaiku = new Haiku("Hello there Francis!", "How are you feeling today?", "I am fine thank you"); 
     myHaiku.splitLine();
     myHaiku.subtractVowels();
     myHaiku.countVowels();

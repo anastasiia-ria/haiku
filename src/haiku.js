@@ -83,13 +83,17 @@ export default class Haiku {
   };
 
   isAHaiku() {
-    
+    if (this.count1 === 5 && this.count2 === 7 && this.count3 === 5) {
+      return true;
+    }
+    return false;
   }
 }
-const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine");
+const myHaiku = new Haiku("Hello there Francis!", "How are you feeling today?", "I am fine thank you"); 
 myHaiku.splitLine();
 myHaiku.subtractVowels();
 myHaiku.countVowels();
+myHaiku.isAHaiku();
 console.log(myHaiku);
 
 
