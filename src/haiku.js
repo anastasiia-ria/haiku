@@ -60,13 +60,37 @@ export default class Haiku {
 
   countVowels() {
     let vowels = /[aeiou]/gi;
-    
-    this.line1.forEach(function() {
-      
+    let that = this;
+
+    this.line1.forEach(function(word) {
+      let result = word.match(vowels);
+      that.count1 += result.length;
     })
-    
-  }
+
+    this.line2.forEach(function(word) {
+      let result = word.match(vowels);
+      that.count2 += result.length;
+    })
+
+    this.line3.forEach(function(word) {
+      let result = word.match(vowels);
+      that.count3 += result.length;
+    })
+
+    console.log(this.count1);
+    console.log(this.count2);
+    console.log(this.count3);
+  };
 }
 const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine");
 myHaiku.splitLine();
 myHaiku.subtractVowels();
+myHaiku.countVowels();
+console.log(myHaiku);
+
+
+
+// for (let i = 0; i < this.line1.length; i++) {
+    //   let result = this.line1[i].match(vowels);
+    //   this.count1 += result.length;
+    // };

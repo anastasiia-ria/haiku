@@ -32,8 +32,8 @@ describe("Haiku", () => {
     myHaiku.splitLine();
     myHaiku.subtractVowels();
     myHaiku.countVowels();
-    expect(myHaiku.count1).toEqual([3]);
-    expect(myHaiku.count2).toEqual([3]);
-    expect(myHaiku.count).toEqual([2]);
+    expect(myHaiku.count1).toEqual(3);
+    expect(myHaiku.count2).toEqual(3);
+    expect(myHaiku.count3).toEqual(2);
   });
 });
