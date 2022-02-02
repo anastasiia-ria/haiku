@@ -36,4 +36,12 @@ describe("Haiku", () => {
     expect(myHaiku.count2).toEqual(3);
     expect(myHaiku.count3).toEqual(2);
   });
+
+  test("should return true if line 1 is 5 syllables, line 2 is 7 syllables and line 3 is 5 syllables", () => {
+    const myHaiku = new Haiku("Hello there Francis!", "How are you doing today?", "I am fine thank you"); 
+    myHaiku.splitLine();
+    myHaiku.subtractVowels();
+    myHaiku.countVowels();
+    expect(myHaiku.isAHaiku()).toEqual(true);
+  });
 });

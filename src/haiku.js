@@ -81,6 +81,10 @@ export default class Haiku {
     console.log(this.count2);
     console.log(this.count3);
   };
+
+  isAHaiku() {
+    
+  }
 }
 const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine");
 myHaiku.splitLine();
