@@ -27,8 +27,10 @@ export default class Haiku {
       }
       for (let i = 0; i < wordArray.length; i ++) {
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
-          wordArray.splice((i+1), 1);
-        }
+          if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
+            wordArray.splice((i+1), 1);
+          }
+        } 
       };
       this.line1[i] = wordArray.join("");
     };
@@ -38,8 +40,12 @@ export default class Haiku {
         wordArray.pop();
       }
       for (let i = 0; i < wordArray.length; i ++) {
+        console.log(wordArray);
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
-          wordArray.splice((i+1), 1);
+          if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
+            wordArray.splice((i+1), 1);
+            console.log(wordArray);
+          }
         }
       };
       this.line2[i] = wordArray.join("");
@@ -50,8 +56,12 @@ export default class Haiku {
         wordArray.pop();
       }
       for (let i = 0; i < wordArray.length; i ++) {
+        console.log(wordArray);
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
-          wordArray.splice((i+1), 1);
+          if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
+            wordArray.splice((i+1), 1);
+            console.log(wordArray);
+          }
         }
       };
       this.line3[i] = wordArray.join("");
@@ -61,20 +71,34 @@ export default class Haiku {
   countVowels() {
     let vowels = /[aeiou]/gi;
     let that = this;
+    const vowelArray = ["a", "e", "i", "o", "u"];
 
     this.line1.forEach(function(word) {
       let result = word.match(vowels);
       that.count1 += result.length;
+      let wordArray = word.split("");
+      if (wordArray[wordArray.length-1] === "y" && vowelArray.includes(wordArray[wordArray.length-2])) {
+        that.count1 ++;
+      }
     })
 
     this.line2.forEach(function(word) {
       let result = word.match(vowels);
       that.count2 += result.length;
+      let wordArray = word.split("");
+      if (wordArray[wordArray.length-1] === "y" && vowelArray.includes(wordArray[wordArray.length-2])) {
+        that.count1 ++;
+      }
     })
 
     this.line3.forEach(function(word) {
       let result = word.match(vowels);
+      console.log(result);
       that.count3 += result.length;
+      let wordArray = word.split("");
+      if (wordArray[wordArray.length-1] === "y" && vowelArray.includes(wordArray[wordArray.length-2])) {
+        that.count1 ++;
+      }
     })
 
     console.log(this.count1);
@@ -89,7 +113,7 @@ export default class Haiku {
     return false;
   }
 }
-const myHaiku = new Haiku("Hello there Francis!", "How are you feeling today?", "I am fine thank you"); 
+const myHaiku = new Haiku("Happy there Francis!", "How are you doing today?", "I'm fine thank you sir"); 
 myHaiku.splitLine();
 myHaiku.subtractVowels();
 myHaiku.countVowels();
