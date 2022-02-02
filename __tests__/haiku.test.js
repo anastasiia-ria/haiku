@@ -18,12 +18,22 @@ describe("Haiku", () => {
     expect(myHaiku.line3).toEqual(["im","fine"]);
   });
 
-  test("should return the count of vowels for each line", () => {
+  test("should remove silent vowels", () => {
     const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
     myHaiku.splitLine();
     myHaiku.subtractVowels();
     expect(myHaiku.line1).toEqual(["hello","ther"]);
     expect(myHaiku.line2).toEqual(["how","ar","yo"]);
     expect(myHaiku.line3).toEqual(["im","fin"]);
+  });
+
+  test("should return the count of vowels per each word for each line", () => {
+    const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
+    myHaiku.splitLine();
+    myHaiku.subtractVowels();
+    myHaiku.countVowels();
+    expect(myHaiku.count1).toEqual([3]);
+    expect(myHaiku.count2).toEqual([3]);
+    expect(myHaiku.count).toEqual([2]);
   });
 });
