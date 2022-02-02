@@ -32,6 +32,7 @@ export default class Haiku {
           console.log(wordArray);
         }
       };
+      this.line1[i] = wordArray.join("");
     };
     for (let i = 0; i < this.line2.length; i++) {
       console.log(this.line2[i]);
@@ -45,6 +46,7 @@ export default class Haiku {
           console.log(wordArray);
         }
       };
+      this.line2[i] = wordArray.join("");
     };
     for (let i = 0; i < this.line3.length; i++) {
       console.log(this.line3[i]);
@@ -58,9 +60,9 @@ export default class Haiku {
           console.log(wordArray);
         }
       };
+      this.line3[i] = wordArray.join("");
     };
   }
-
 }
 const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine");
 myHaiku.splitLine();
