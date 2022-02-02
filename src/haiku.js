@@ -59,6 +59,11 @@ export default class Haiku {
   }
 
   countVowels() {
+    let vowels = /[aeiou]/gi;
+    
+    this.line1.forEach(function() {
+      
+    })
     
   }
 }
