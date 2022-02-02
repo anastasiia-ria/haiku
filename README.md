@@ -1,7 +1,7 @@
 
-# _PROJECT NAME_ 
+# _Haiku_ 
 
-#### By _**Ryan Ashby**_ 
+#### By _**Ryan Ashby, Anastasiia Riabets & Jessica Baker**_ 
 
 #### _SHORT DESCRIPTION_
 
@@ -25,7 +25,7 @@
 
 ## Description 
 
-_This application..._
+_This is an application that checks whether a poem is in fact a haiku. A haiku is a poem that consists of three lines. The first has five syllables, the second has seven, and the third has five._
 
 ## Setup/Installation Requirements 
 
@@ -67,15 +67,6 @@ _This application..._
 3) _Once built, you can open dist/index.html in your browser._
 
 4) _To run a server view of the project, you can type the command "npm start" to witness and inspect any changes you wish to make in real time._
-
-## Tests/Specs
-
-#### Describe: 
-
-*Test:* "It should..."
-*Code:* ;
-*Input:*
-*Expected Output:* 
 
 ## Known Bugs 
 

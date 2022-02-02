@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Euler',
+      title: 'haiku',
       template: './src/index.html',
       inject: 'body'
     }),
