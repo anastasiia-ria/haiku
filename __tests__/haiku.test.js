@@ -9,4 +9,12 @@ describe("Haiku", () => {
     expect(myHaiku.line2).toEqual("How are you");
     expect(myHaiku.line3).toEqual("I'm fine");
   });
+
+  test("should create three arrays of words for each line", () => {
+    const myHaiku = new Haiku("Hello There", "How are you", "I'm fine"); 
+    myHaiku.splitLine();
+    expect(myHaiku.line1).toEqual(["hello","there"]);
+    expect(myHaiku.line2).toEqual(["how","are","you"]);
+    expect(myHaiku.line3).toEqual(["i'm","fine"]);
+  });
 });
