@@ -16,9 +16,52 @@ export default class Haiku {
     this.line3 = array3;
     console.log(this.line2);
   }
+  
+  subtractVowels() {
+    const vowelArray = ["a", "e", "i", "o", "u"];
+    for (let i = 0; i < this.line1.length; i++) {
+      console.log(this.line1[i]);
+      let wordArray = this.line1[i].split("");
+      if ("e" === wordArray[wordArray.length-1]) {
+        wordArray.pop();
+        console.log(wordArray);
+      }
+      for (let i = 0; i < wordArray.length; i ++) {
+        if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
+          wordArray.splice((i+1), 1);
+          console.log(wordArray);
+        }
+      };
+    };
+    for (let i = 0; i < this.line2.length; i++) {
+      console.log(this.line2[i]);
+      let wordArray = this.line2[i].split("");
+      if ("e" === wordArray[wordArray.length-1]) {
+        wordArray.pop();
+      }
+      for (let i = 0; i < wordArray.length; i ++) {
+        if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
+          wordArray.splice((i+1), 1);
+          console.log(wordArray);
+        }
+      };
+    };
+    for (let i = 0; i < this.line3.length; i++) {
+      console.log(this.line3[i]);
+      let wordArray = this.line3[i].split("");
+      if ("e" === wordArray[wordArray.length-1]) {
+        wordArray.pop();
+      }
+      for (let i = 0; i < wordArray.length; i ++) {
+        if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
+          wordArray.splice((i+1), 1);
+          console.log(wordArray);
+        }
+      };
+    };
+  }
+
 }
 const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine");
 myHaiku.splitLine();
-// let string = "This., -/ is #! an $ % ^ & * example ;: {} of a = -_ string with `~)() punctuation";
-// let punctuationless = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-// let finalString = punctuationless.replace(/\s{2,}/g," ");
+myHaiku.subtractVowels();
