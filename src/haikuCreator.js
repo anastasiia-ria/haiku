@@ -35,20 +35,20 @@ export default class HaikuCreator {
   }
 
   randomLineTwo() {
-  //   let randomWords = require('random-words');
-  //   for ( let i = 0; i < 7; i++) {
-  //     let randomWord = randomWords({exactly: 1}).join("");
-  //     this.haiku[0].lineArray.push(randomWord);
-  //     this.haiku[0].countSyllables();
-  //     if (this.haiku[0].sylCount > 7) {
-  //       this.haiku[0].lineArray.pop();
-  //       this.haiku[0].countSyllables();
-  //       i--;
-  //     } else if (this.haiku[0].sylCount === 7) {
-  //       this.haiku[0].line = this.haiku[0].lineArray.join(" ");
-  //       return true;
-  //     }
-  //   }
-  //   return false;
+    let randomWords = require('random-words');
+    for ( let i = 0; i < 7; i++) {
+      let randomWord = randomWords({exactly: 1}).join("");
+      this.haiku[0].lineArray.push(randomWord);
+      this.haiku[0].countSyllables();
+      if (this.haiku[0].sylCount > 7) {
+        this.haiku[0].lineArray.pop();
+        this.haiku[0].countSyllables();
+        i--;
+      } else if (this.haiku[0].sylCount === 7) {
+        this.haiku[0].line = this.haiku[0].lineArray.join(" ");
+        return true;
+      }
+    }
+    return false;
   }
 }
