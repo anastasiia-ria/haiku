@@ -49,9 +49,9 @@ describe("Line", () => {
     line1.countVowels();
     line2.countVowels();
     line3.countVowels();
-    expect(line1.count).toEqual(5);
-    expect(line2.count).toEqual(7);
-    expect(line3.count).toEqual(5);
+    expect(line1.sylCount).toEqual(5);
+    expect(line2.sylCount).toEqual(7);
+    expect(line3.sylCount).toEqual(5);
   });
 });
 

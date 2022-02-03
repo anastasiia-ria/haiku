@@ -12,6 +12,9 @@ describe("HaikuCreator", () => {
     line1 = new Line("Happy there Francis!"); 
     line2 = new Line("How are you doing today?");
     line3 = new Line("I am fine thank you");
+    line1.splitLine();
+    line2.splitLine();
+    line3.splitLine();
     haiku = new HaikuCreator();
   });
 
@@ -47,7 +50,8 @@ describe("HaikuCreator", () => {
 
   test("should continue to push new random words into line1 array, until 5 syllables are reached. if over 5 syllables, pop off word and try again until 5 syllables are reached", () => {
     let randomLine1 = new Line("");
-    haiku.addLine(randomLine1);
-    expect(haiku.randomLineOne()).toEqual(true);
+    let RandomHaiku = new HaikuCreator();
+    RandomHaiku.addLine(randomLine1);
+    expect(RandomHaiku.randomLineOne()).toEqual(true);
   })
 });

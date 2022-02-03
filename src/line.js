@@ -3,11 +3,11 @@ export default class Line {
   constructor(line) {
     this.line = line;
     this.lineArray = [];
-    this.count = 0;
+    this.sylCount = 0;
   }
 
   splitLine() {
-    this.lineArray = this.line.toLowerCase().replace(/[.,\/#?!$%\^&\*;:{}=\-_'`~()]/g,"").replace(/\s{2,}/g," ").split(" ");
+    this.lineArray = this.line.toLowerCase().replace(/[.,/#?!$%^&*;:{}=\-_'`~()]/g,"").replace(/\s{2,}/g," ").split(" ");
   }
 
   subtractVowels() {
@@ -23,29 +23,28 @@ export default class Line {
             wordArray.splice((i+1), 1);
           }
         } 
-      };
+      }
       this.lineArray[i] = wordArray.join("");
-    };
+    }
   }
 
   countVowels() {
     let vowels = /[aeiou]/gi;
     let that = this;
     const vowelArray = ["a", "e", "i", "o", "u"];
-    that.count = 0;
+    that.sylCount = 0;
 
     this.lineArray.forEach(function(word) {
       let result = word.match(vowels);
-      that.count += result.length;
+      that.sylCount += result.length;
       let wordArray = word.split("");
       if (wordArray[wordArray.length-1] === "y" && !vowelArray.includes(wordArray[wordArray.length-2])) {
-        that.count ++;
+        that.sylCount ++;
       }
     });
   }
 
   countSyllables() {
-    this.splitLine();
     this.subtractVowels();
     this.countVowels();
   }
