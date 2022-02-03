@@ -40,11 +40,9 @@ export default class Haiku {
         wordArray.pop();
       }
       for (let i = 0; i < wordArray.length; i ++) {
-        console.log(wordArray);
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
           if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
             wordArray.splice((i+1), 1);
-            console.log(wordArray);
           }
         }
       };
@@ -56,11 +54,9 @@ export default class Haiku {
         wordArray.pop();
       }
       for (let i = 0; i < wordArray.length; i ++) {
-        console.log(wordArray);
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
           if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
             wordArray.splice((i+1), 1);
-            console.log(wordArray);
           }
         }
       };
@@ -93,17 +89,12 @@ export default class Haiku {
 
     this.line3.forEach(function(word) {
       let result = word.match(vowels);
-      console.log(result);
       that.count3 += result.length;
       let wordArray = word.split("");
       if (wordArray[wordArray.length-1] === "y" && vowelArray.includes(wordArray[wordArray.length-2])) {
         that.count1 ++;
       }
     })
-
-    console.log(this.count1);
-    console.log(this.count2);
-    console.log(this.count3);
   };
 
   isAHaiku() {
@@ -118,7 +109,6 @@ myHaiku.splitLine();
 myHaiku.subtractVowels();
 myHaiku.countVowels();
 myHaiku.isAHaiku();
-console.log(myHaiku);
 
 
 
