@@ -3,6 +3,7 @@ export default class Line {
   constructor(line) {
     this.line = line;
     this.lineArray = [];
+    this.lineArrayTest = [];
     this.sylCount = 0;
   }
 
@@ -36,7 +37,9 @@ export default class Line {
 
     this.lineArray.forEach(function(word) {
       let result = word.match(vowels);
-      that.sylCount += result.length;
+      if (result !== null) {
+        that.sylCount += result.length;
+      }
       let wordArray = word.split("");
       if (wordArray[wordArray.length-1] === "y" && !vowelArray.includes(wordArray[wordArray.length-2])) {
         that.sylCount ++;
@@ -47,5 +50,43 @@ export default class Line {
   countSyllables() {
     this.subtractVowels();
     this.countVowels();
+  }
+
+  randomFive() {
+    let randomWords = require('random-words');
+    for ( let i = 0; i < 5; i++) {
+      let randomWord = randomWords({exactly: 1}).join("");
+      this.lineArray.push(randomWord);
+      this.lineArrayTest.push(randomWord);
+      this.countSyllables();
+      if (this.sylCount > 5) {
+        this.lineArray.pop();
+        this.lineArrayTest.pop();
+        this.countSyllables();
+        i--;
+      } else if (this.sylCount === 5) {
+        this.line = this.lineArrayTest.join(" ");
+        return true;
+      }
+    }
+  }
+
+  randomSeven() {
+    let randomWords = require('random-words');
+    for ( let i = 0; i < 7; i++) {
+      let randomWord = randomWords({exactly: 1}).join("");
+      this.lineArray.push(randomWord);
+      this.lineArrayTest.push(randomWord);
+      this.countSyllables();
+      if (this.sylCount > 7) {
+        this.lineArray.pop();
+        this.lineArrayTest.pop();
+        this.countSyllables();
+        i--;
+      } else if (this.sylCount === 7) {
+        this.line = this.lineArrayTest.join(" ");
+        return true;
+      }
+    }
   }
 }

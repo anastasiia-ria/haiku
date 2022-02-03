@@ -53,5 +53,15 @@ describe("Line", () => {
     expect(line2.sylCount).toEqual(7);
     expect(line3.sylCount).toEqual(5);
   });
+
+  test("should continue to push new random words into line1 array, until 5 syllables are reached. if over 5 syllables, pop off word and try again until 5 syllables are reached", () => {
+    let randomLine1 = new Line("");
+    expect(randomLine1.randomFive()).toEqual(true);
+  })
+
+  test("should continue to push new random words into line2 array, until 7 syllables are reached. if over 7 syllables, pop off word and try again until 7 syllables are reached", () => {
+    let randomLine2 = new Line("");
+    expect(randomLine2.randomSeven()).toEqual(true);
+  })
 });
 
