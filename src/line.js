@@ -46,6 +46,6 @@ export default class Line {
   countSyllables() {
     this.splitLine();
     this.subtractVowels();
-    this.countVowels;
+    this.countVowels();
   }
 }

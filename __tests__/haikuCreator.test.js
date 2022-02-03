@@ -33,4 +33,15 @@ describe("HaikuCreator", () => {
     haiku.haiku[2].countSyllables();
     expect(haiku.isAHaiku()).toEqual(true);
   });
+
+  test("should return false if it is not a haiku", () => {
+    let line4 = new Line("I'm fine thank you");
+    haiku.addLine(line1);
+    haiku.addLine(line2);
+    haiku.addLine(line4);
+    haiku.haiku[0].countSyllables();
+    haiku.haiku[1].countSyllables();
+    haiku.haiku[2].countSyllables();
+    expect(haiku.isAHaiku()).toEqual(false);
+  });
 });
