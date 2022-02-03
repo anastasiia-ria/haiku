@@ -53,6 +53,10 @@ export default class Haiku {
       if ("e" === wordArray[wordArray.length-1]) {
         wordArray.pop();
       }
+      if ("s" === wordArray[wordArray.length-1] && "e" === wordArray[wordArray.length-2]) {
+        wordArray.pop();
+        wordArray.pop();
+      }
       for (let i = 0; i < wordArray.length; i ++) {
         if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
           if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {

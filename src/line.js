@@ -14,16 +14,27 @@ export default class Line {
   subtractVowels() {
     const vowelArray = ["a", "e", "i", "o", "u"];
     for (let i = 0; i < this.lineArray.length; i++) {
+      let vowelCheck = 0;
       let wordArray = this.lineArray[i].split("");
-      if ("e" === wordArray[wordArray.length-1]) {
-        wordArray.pop();
-      }
-      for (let i = 0; i < wordArray.length; i ++) {
-        if (vowelArray.includes(wordArray[i]) && vowelArray.includes(wordArray[i+1])) {
-          if (wordArray[i+3] !== "g" && wordArray[i+2] !== "n" && wordArray[i+1] !== "i") {
-            wordArray.splice((i+1), 1);
+      for (let j = 0; j < wordArray.length; j ++) {
+        if (vowelArray.includes(wordArray[j])) {
+          vowelCheck ++;
+        }
+        if (vowelArray.includes(wordArray[j]) && vowelArray.includes(wordArray[j+1])) {
+          if ((wordArray[j+3] === "g") && wordArray[j+2] === "n" && wordArray[j+1] === "i") {
+            return 0;
+          } else {
+            wordArray.splice((j+1), 1);
           }
         } 
+      }
+      console.log(vowelCheck);
+      if ("e" === wordArray[wordArray.length-1] && vowelCheck > 1) {
+        wordArray.pop();
+      }
+      if ("s" === wordArray[wordArray.length-1] && "e" === wordArray[wordArray.length-2] && vowelCheck > 1) {
+        wordArray.pop();
+        wordArray.pop();
       }
       this.lineArray[i] = wordArray.join("");
     }
@@ -40,6 +51,8 @@ export default class Line {
       if (result !== null) {
         that.sylCount += result.length;
       }
+      console.log(word);
+      console.log(that.sylCount);
       let wordArray = word.split("");
       if (wordArray[wordArray.length-1] === "y" && !vowelArray.includes(wordArray[wordArray.length-2])) {
         that.sylCount ++;
