@@ -54,4 +54,11 @@ describe("HaikuCreator", () => {
     RandomHaiku.addLine(randomLine1);
     expect(RandomHaiku.randomLineOne()).toEqual(true);
   })
+
+  test("should continue to push new random words into line2 array, until 7 syllables are reached. if over 7 syllables, pop off word and try again until 7 syllables are reached", () => {
+    let randomLine2 = new Line("");
+    let RandomHaiku = new HaikuCreator();
+    RandomHaiku.addLine(randomLine2);
+    expect(RandomHaiku.randomLineTwo()).toEqual(true);
+  })
 });
