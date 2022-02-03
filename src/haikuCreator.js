@@ -15,4 +15,21 @@ export default class HaikuCreator {
     }
     return false;
   }
+
+  randomLineOne() {
+  //   const randomWords = require('random-words');
+  //   while(this.haiku[0].count < 5) {
+  //     this.haiku[0].lineArray.push(randomWords());
+  //     this.haiku[0].countSyllables;
+  //     if (this.haiku[0].count > 5) {
+  //       this.haiku[0].lineArray.pop();
+  //       this.haiku[0].countSyllables;
+  //     } else if (this.haiku[0].count === 5) {
+  //       this.haiku[0].line = this.haiku[0].lineArray.join(" ");
+  //       return true;
+  //       break;
+  //     }
+  //   }
+  //   return false;
+  }
 }

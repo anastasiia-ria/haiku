@@ -32,6 +32,7 @@ export default class Line {
     let vowels = /[aeiou]/gi;
     let that = this;
     const vowelArray = ["a", "e", "i", "o", "u"];
+    that.count = 0;
 
     this.lineArray.forEach(function(word) {
       let result = word.match(vowels);

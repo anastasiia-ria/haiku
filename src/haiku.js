@@ -1,5 +1,5 @@
+var randomWords = require('random-words');
 export default class Haiku {
-
   constructor(line1, line2, line3) {
     this.line1 = line1;
     this.line2 = line2;
@@ -109,6 +109,8 @@ myHaiku.splitLine();
 myHaiku.subtractVowels();
 myHaiku.countVowels();
 myHaiku.isAHaiku();
+var randomWords = require('random-words');
+randomWords(5);
 
 
 

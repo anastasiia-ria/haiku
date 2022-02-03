@@ -44,4 +44,10 @@ describe("HaikuCreator", () => {
     haiku.haiku[2].countSyllables();
     expect(haiku.isAHaiku()).toEqual(false);
   });
+
+  test("should continue to push new random words into line1 array, until 5 syllables are reached. if over 5 syllables, pop off word and try again until 5 syllables are reached", () => {
+    let randomLine1 = new Line("");
+    haiku.addLine(randomLine1);
+    expect(haiku.randomLineOne()).toEqual(true);
+  })
 });
