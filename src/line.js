@@ -28,7 +28,6 @@ export default class Line {
           }
         } 
       }
-      console.log(vowelCheck);
       if ("e" === wordArray[wordArray.length-1] && vowelCheck > 1) {
         wordArray.pop();
       }
@@ -51,8 +50,6 @@ export default class Line {
       if (result !== null) {
         that.sylCount += result.length;
       }
-      console.log(word);
-      console.log(that.sylCount);
       let wordArray = word.split("");
       if (wordArray[wordArray.length-1] === "y" && !vowelArray.includes(wordArray[wordArray.length-2])) {
         that.sylCount ++;
