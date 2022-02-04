@@ -58,6 +58,8 @@ $(document).ready(function () {
     $('ul#random-haiku').append("<li>" + randomOne.line + "</li>");
     $('ul#random-haiku').append("<li>" + randomTwo.line + "</li>");
     $('ul#random-haiku').append("<li>" + randomThree.line + "</li>");
+    $(".output").fadeIn();
+    window.scrollTo(0,document.body.scrollHeight);
   });
 
 });
