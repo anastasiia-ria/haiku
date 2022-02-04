@@ -27,11 +27,19 @@ export default class Line {
             wordArray.splice((j+1), 1);
           }
         } 
+        if (wordArray[j] === "y" && ((!vowelArray.includes(wordArray[j-1])) || wordArray[j-1] === undefined ) && ((!vowelArray.includes(wordArray[j+1])) || wordArray[j-1] === undefined )) {
+          this.sylCount ++;
+          console.log(wordArray[j-1]);
+          console.log(wordArray[j+1]);
+          console.log(vowelArray.includes(wordArray[j-1]));
+          console.log(vowelArray.includes(wordArray[j+1]));
+          console.log("yCount");
+        }
       }
-      if ("e" === wordArray[wordArray.length-1] && vowelCheck > 1) {
+      if ("e" === wordArray[wordArray.length-1] && (vowelCheck > 1 || this.count === 1)) {
         wordArray.pop();
       }
-      if ("s" === wordArray[wordArray.length-1] && "e" === wordArray[wordArray.length-2] && vowelCheck > 1) {
+      if (("s" === wordArray[wordArray.length-1] || "d" === wordArray[wordArray.length-1] )&& "e" === wordArray[wordArray.length-2] && vowelCheck > 1) {
         wordArray.pop();
         wordArray.pop();
       }
@@ -42,19 +50,16 @@ export default class Line {
   countVowels() {
     let vowels = /[aeiou]/gi;
     let that = this;
-    const vowelArray = ["a", "e", "i", "o", "u"];
-    that.sylCount = 0;
+    this.sylCount = 0;
 
     this.lineArray.forEach(function(word) {
       let result = word.match(vowels);
       if (result !== null) {
         that.sylCount += result.length;
       }
-      let wordArray = word.split("");
-      if (wordArray[wordArray.length-1] === "y" && !vowelArray.includes(wordArray[wordArray.length-2])) {
-        that.sylCount ++;
-      }
+      console.log(word);
     });
+    console.log(that.sylCount);
   }
 
   countSyllables() {
