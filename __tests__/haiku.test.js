@@ -1,48 +1,50 @@
 import { TestWatcher } from "jest";
-import Haiku from "../src/haiku";
+import Haiku from "../src/js/haiku";
+import Line from "../src/js/line";
 
 describe("Haiku", () => {
+  let line1;
+  let line2;
+  let line3;
+  let haiku;
 
-  test("should create a haiku object with lines 1, 2, and 3", () => {
-    const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
-    expect(myHaiku.line1).toEqual("Hello There!");
-    expect(myHaiku.line2).toEqual("How are you?");
-    expect(myHaiku.line3).toEqual("I'm fine");
+  beforeEach(() => {
+    line1 = new Line("Happy there Francis!");
+    line2 = new Line("How are you doing today?");
+    line3 = new Line("I am fine thank you");
+    line1.splitLine();
+    line2.splitLine();
+    line3.splitLine();
+    haiku = new Haiku();
   });
 
-  test("should create three arrays of words for each line", () => {
-    const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
-    myHaiku.splitLine();
-    expect(myHaiku.line1).toEqual(["hello","there"]);
-    expect(myHaiku.line2).toEqual(["how","are","you"]);
-    expect(myHaiku.line3).toEqual(["im","fine"]);
-  });
-
-  test("should remove silent vowels", () => {
-    const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
-    myHaiku.splitLine();
-    myHaiku.subtractVowels();
-    expect(myHaiku.line1).toEqual(["hello","ther"]);
-    expect(myHaiku.line2).toEqual(["how","ar","yo"]);
-    expect(myHaiku.line3).toEqual(["im","fin"]);
-  });
-
-  test("should return the count of vowels per each word for each line", () => {
-    const myHaiku = new Haiku("Hello There!", "How are you?", "I'm fine"); 
-    myHaiku.splitLine();
-    myHaiku.subtractVowels();
-    myHaiku.countVowels();
-    expect(myHaiku.count1).toEqual(3);
-    expect(myHaiku.count2).toEqual(3);
-    expect(myHaiku.count3).toEqual(2);
+  test("should create a haiku object ", () => {
+    haiku.addLine(line1);
+    haiku.addLine(line2);
+    haiku.addLine(line3);
+    expect(haiku.haiku[0].line).toEqual("Happy there Francis!");
+    expect(haiku.haiku[1].line).toEqual("How are you doing today?");
+    expect(haiku.haiku[2].line).toEqual("I am fine thank you");
   });
 
   test("should return true if line 1 is 5 syllables, line 2 is 7 syllables and line 3 is 5 syllables", () => {
-    const myHaiku = new Haiku("Happy there Francis!", "How are you doing today?", "I am fine thank you"); 
-    myHaiku.splitLine();
-    myHaiku.subtractVowels();
-    myHaiku.countVowels();
-    expect(myHaiku.isAHaiku()).toEqual(true);
+    haiku.addLine(line1);
+    haiku.addLine(line2);
+    haiku.addLine(line3);
+    haiku.haiku[0].countSyllables();
+    haiku.haiku[1].countSyllables();
+    haiku.haiku[2].countSyllables();
+    expect(haiku.isAHaiku()).toEqual(true);
+  });
+
+  test("should return false if it is not a haiku", () => {
+    let line4 = new Line("I'm fine thank you");
+    haiku.addLine(line1);
+    haiku.addLine(line2);
+    haiku.addLine(line4);
+    haiku.haiku[0].countSyllables();
+    haiku.haiku[1].countSyllables();
+    haiku.haiku[2].countSyllables();
+    expect(haiku.isAHaiku()).toEqual(false);
   });
 });
-

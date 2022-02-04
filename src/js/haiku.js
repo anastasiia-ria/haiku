@@ -1,5 +1,4 @@
-export default class HaikuCreator {
-
+export default class Haiku {
   constructor() {
     this.haiku = [];
   }

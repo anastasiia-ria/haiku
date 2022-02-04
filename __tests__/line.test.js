@@ -1,5 +1,4 @@
-import { TestWatcher } from "jest";
-import Line from "../src/line";
+import Line from "../src/js/line";
 
 describe("Line", () => {
   let line1;
@@ -34,7 +33,7 @@ describe("Line", () => {
     line1.subtractVowels();
     line2.subtractVowels();
     line3.subtractVowels();
-    expect(line1.lineArray).toEqual(["happy", "go", "francis"]);
+    expect(line1.lineArray).toEqual(["happy", "ges", "francis"]);
     expect(line2.lineArray).toEqual(["how", "ar", "u", "doing", "tody"]);
     expect(line3.lineArray).toEqual(["i", "am", "fin", "thank", "u"]);
   });

@@ -24,22 +24,20 @@ export default class Line {
         if (vowelArray.includes(wordArray[j])) {
           vowelCheck++;
         }
-      }
 
-      let eEnding = wordArray[wordArray.length - 1] === "e" && vowelCheck > 1;
-      let esEdEnding = (wordArray[wordArray.length - 1] === "s" || wordArray[wordArray.length - 1] === "d") && wordArray[wordArray.length - 2] === "e" && vowelCheck > 1;
-
-      if (eEnding) {
-        wordArray.pop();
-      }
-      if (esEdEnding) {
-        wordArray.pop();
-        wordArray.pop();
-      }
-
-      for (let j = 0; j < wordArray.length; j++) {
+        let eEnding = wordArray[wordArray.length - 1] === "e" && vowelCheck > 1;
+        let esEdEnding = (wordArray[wordArray.length - 1] === "s" || wordArray[wordArray.length - 1] === "d") && wordArray[wordArray.length - 2] === "e" && vowelArray.includes(wordArray[wordArray.length - 3]) && vowelCheck > 1;
         let doubleVowel = vowelArray.includes(wordArray[j]) && vowelArray.includes(wordArray[j + 1]);
         let ingEnding = wordArray[j + 1] === "i" && wordArray[j + 2] === "n" && wordArray[j + 3] === "g";
+
+        if (eEnding) {
+          wordArray.pop();
+        }
+
+        if (esEdEnding) {
+          wordArray.pop();
+          wordArray.pop();
+        }
 
         if (vowelArray.includes(wordArray[j])) {
           vowelCheck++;
@@ -81,7 +79,6 @@ export default class Line {
       this.lineArray.push(randomWord);
       this.lineArrayTest.push(randomWord);
       this.countSyllables();
-      console.log(this.sylCount);
       if (this.sylCount > syllables) {
         this.lineArray.pop();
         this.lineArrayTest.pop();
