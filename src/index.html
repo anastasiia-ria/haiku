@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haiku</title>
-</head>
-<body>
-  <div class="container">
-    <h1>Haiku Checker</h1>
-    <img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/12/30151747/Pembroke-Welsh-Corgi-smiling-and-happy-outdoors.jpeg" alt="">
-    <form id="haiku-checker">
-      <input id="line-one" placeholder="First Line">
-      <input id="line-two" placeholder="Second Line">
-      <input id="line-three" placeholder="Third Line">
-      <button type="submit">Check</button>
-    </form>
-    <p id="check-result"></p>
-    <button type="button" id="random">Random</button>
-    <div class="output">
-      <ul id="random-haiku" class="mb-0">
-
-      </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haiku</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="haiku-box">
+        <ul id="display-haiku" class="mb-0"></ul>
+        <button type="button" id="random">Random</button>
+        <p id="check-result"></p>
+      </div>
+      <div class="checker-box">
+        <h1>Check your Haiku</h1>
+        <form id="haiku-checker">
+          <input id="line-one" placeholder="First Line" required />
+          <input id="line-two" placeholder="Second Line" required />
+          <input id="line-three" placeholder="Third Line" required />
+          <button type="submit">Check</button>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
