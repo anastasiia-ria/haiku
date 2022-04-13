@@ -27,7 +27,7 @@ function randomFunction() {
   showHaiku(randomHaiku);
 }
 
-randomFunction();
+// randomFunction();
 
 $(document).ready(function () {
   $("form#haiku-checker").submit(function (event) {

@@ -1,7 +1,65 @@
+function removeE(word) {
+  let lastChar = word.slice(-1);
+  if (lastChar === "e") {
+    return word.slice(0, -1);
+  } else {
+    return word;
+  }
+}
+
+function removeESED(word, vowelCheck) {
+  let lastChar = word.slice(-2);
+  if ((lastChar === "es" || lastChar === "ed") && vowelCheck > 1) {
+    return word.slice(0, -2);
+  } else {
+    return word;
+  }
+}
+
+function doubles(word) {
+  let wordArray = word.split("");
+  const vowelArray = ["a", "e", "i", "o", "u", "y"];
+  for (let x = 0; x < wordArray.length; x++) {
+    if (vowelArray.includes(wordArray[x]) && vowelArray.includes(wordArray[x + 1])) {
+      word = word.substr(0, x) + word.substr(x + 1, word.length - 1);
+    }
+  }
+  return word;
+}
+
+function subtractVowels(line) {
+  const words = line.split(" ");
+  words.forEach(function (word) {
+    const vowelsMatch = word.match(/[aeiuoy]/gi);
+    let vowelsCheck = 0;
+    if (vowelsMatch) {
+      vowelsCheck = vowelsMatch.length;
+    }
+    word = removeE(word, vowelsCheck);
+    word = removeESED(word, vowelsCheck);
+    word = doubles(word);
+  });
+  const letters = words.join(" ").split("");
+  return countVowels(letters, 0, 0);
+}
+
+function countVowels(letters, vowelCount, index) {
+  const vowelArray = ["a", "e", "i", "o", "u", "y"];
+  if (vowelArray.includes(letters[index])) {
+    vowelCount++;
+  }
+  if (index === letters.length - 1) {
+    return vowelCount;
+  }
+  index++;
+  return countVowels(letters, vowelCount, index);
+}
+
 export default class Line {
   constructor(line) {
     this.line = line;
     this.lineArray = [];
+    this.letters = [];
     this.lineArrayTest = [];
     this.sylCount = 0;
   }
@@ -14,62 +72,8 @@ export default class Line {
       .split(" ");
   }
 
-  subtractVowels() {
-    const vowelArray = ["a", "e", "i", "o", "u", "y"];
-    for (let i = 0; i < this.lineArray.length; i++) {
-      let vowelCheck = 0;
-      let wordArray = this.lineArray[i].split("");
-
-      for (let j = 0; j < wordArray.length; j++) {
-        if (vowelArray.includes(wordArray[j])) {
-          vowelCheck++;
-        }
-
-        let eEnding = wordArray[wordArray.length - 1] === "e" && vowelCheck > 1;
-        let esEdEnding = (wordArray[wordArray.length - 1] === "s" || wordArray[wordArray.length - 1] === "d") && wordArray[wordArray.length - 2] === "e" && vowelArray.includes(wordArray[wordArray.length - 3]) && vowelCheck > 1;
-        let doubleVowel = vowelArray.includes(wordArray[j]) && vowelArray.includes(wordArray[j + 1]);
-        let ingEnding = wordArray[j + 1] === "i" && wordArray[j + 2] === "n" && wordArray[j + 3] === "g";
-
-        if (eEnding) {
-          wordArray.pop();
-        }
-
-        if (esEdEnding) {
-          wordArray.pop();
-          wordArray.pop();
-        }
-
-        if (vowelArray.includes(wordArray[j])) {
-          vowelCheck++;
-        }
-
-        if (doubleVowel) {
-          if (!ingEnding) {
-            wordArray.splice(j, 1);
-            j--;
-          }
-        }
-      }
-      this.lineArray[i] = wordArray.join("");
-    }
-  }
-
-  countVowels() {
-    let vowels = /[aeiouy]/gi;
-    let that = this;
-    that.sylCount = 0;
-
-    this.lineArray.forEach(function (word) {
-      let result = word.match(vowels);
-      if (result !== null) {
-        that.sylCount += result.length;
-      }
-    });
-  }
-
   countSyllables() {
-    this.subtractVowels();
-    this.countVowels();
+    this.sylCount = subtractVowels(this.line);
   }
 
   randomHaiku(syllables) {
@@ -78,6 +82,7 @@ export default class Line {
       let randomWord = randomWords({ exactly: 1 }).join("");
       this.lineArray.push(randomWord);
       this.lineArrayTest.push(randomWord);
+      this.line = this.lineArray.join(" ");
       this.countSyllables();
       if (this.sylCount > syllables) {
         this.lineArray.pop();
